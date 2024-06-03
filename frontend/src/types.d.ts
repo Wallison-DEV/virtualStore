@@ -5,4 +5,5 @@ declare type ButtonProps = {
     className?: string
     onClick?: () => void
     maxwidth?: string
+    href?: string
 }

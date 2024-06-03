@@ -13,6 +13,13 @@ export const LoginDiv = styled.form`
 
     a {
         color: blue;
+        cursor: pointer;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+            color: #ff4c32;
+        }
     }
 `
 

@@ -67,3 +67,6 @@ export const ButtonStyle = styled.button<Omit<ButtonProps, 'children'| 'type' | 
         d: path("M0,0 C30,10 70,10 100,0 C95,30 95,70 100,100 C70,90 30,90 0,100 C5,70 5,30 0,0");
     }
 `
+export const ButtonLink = styled(ButtonStyle).attrs({ as: 'a' })`
+    text-decoration: none;
+`
