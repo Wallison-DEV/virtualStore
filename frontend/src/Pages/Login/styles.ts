@@ -4,7 +4,6 @@ export const LoginDiv = styled.form`
     display: flex;
     max-width: 350px;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     padding: 16px;
     gap: 16px;
