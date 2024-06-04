@@ -5,9 +5,11 @@ export const StyledHeader = styled.header`
     display: flex;
     flex-direction: column;
     padding: 16px;
-    position: sticky;
+    // position: sticky;
     top: 0;
     border-bottom: 1px solid rgba(106, 106, 106, 0.4);
+    z-index: 1;
+    background-color: ${(props)=> props.theme.backgroundColor};
 
     nav{
         display: flex;
@@ -67,5 +69,35 @@ export const SearchBar = styled.form`
                 background: #7a0aae;
             }
         }
+    }
+`
+
+export const CategoryNavItem = styled.a`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 8px;
+    width: 80px;
+    cursor: pointer;
+    border-bottom: 4px solid transparent;
+    transition: all 0.3s;
+
+    * {
+        color: ${(props)=> props.theme.borderColor};
+    }
+    svg{
+        fill: ${(props)=> props.theme.borderColor};
+    }
+    
+    &:hover {
+        *{
+            color: #111;
+        }
+        svg{
+            fill: #111;
+        }
+        border-bottom: 4px solid rgb(221, 221, 221);
     }
 `

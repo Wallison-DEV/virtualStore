@@ -32,4 +32,5 @@ export const Container = styled.div`
     max-width: 1310px;
     justify-content: center;
     margin: 0 auto;
+    padding-bottom: 24px;
 `
