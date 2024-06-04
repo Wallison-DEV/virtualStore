@@ -12,13 +12,16 @@ export const GlobalStyle = createGlobalStyle`
         background-color: ${(props)=> props.theme.backgroundColor};
     }
     .container{
-        max-width: 1260px;
+        max-width: 1310px;
         flex-direction: column;
         width: 100%;
         margin: 0 auto;
         display: flex;
         align-items: center;
-        justify-content: center;
+    }
+    .logo{
+        width: 48px;
+        height: 48px;
     }
 `
 
