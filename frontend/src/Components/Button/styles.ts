@@ -11,14 +11,26 @@ export const ButtonStyle = styled.button<Omit<ButtonProps, 'children'| 'type' | 
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
-    border: none;
     
     appearance: none;
-    background: transparent;
     font: inherit;
     padding: 1em 1.5em;
     position: relative;
     transition: filter var(--motion-duration), transform var(--motion-duration) var(--motion-ease);
+    
+    border: ${(props) => (props.variant == 'light' ? '1px solid #111' : 'none')};
+
+    background: ${(props) => {
+            switch (props.variant) {
+                case 'blue':
+                    return props.theme.blueButton;
+                case 'light':
+                    return props.theme.lightButton;
+                default:
+                    return props.theme.primaryButton;
+            }
+        }
+    };
     
     &:hover {
         filter: brightness(1.1);
@@ -33,7 +45,8 @@ export const ButtonStyle = styled.button<Omit<ButtonProps, 'children'| 'type' | 
         position: relative;
         transition: transform var(--motion-duration) var(--motion-ease);
         z-index: 1;
-        color: #fff;
+        font-size: 1rem;
+        color: ${(props) => (props.variant == 'light' ? `#111` : '#fff')};
         font-weight: 500;
     }
 
@@ -45,27 +58,7 @@ export const ButtonStyle = styled.button<Omit<ButtonProps, 'children'| 'type' | 
         transform: scale(0.95);
     }
 
-    & > svg {
-        fill: #950cde;
-        position: absolute;
-        top: -5%;
-        left: -5%;
-        width: 110%;
-        height: 110%;
-        transition: var(--motion-duration) var(--motion-ease);
-    }
-
-    & > svg > path {
-        transition: var(--motion-duration) var(--motion-ease);
-    }
-
-    &:hover > svg > path {
-        d: path("M0,0 C0,-5 100,-5 100,0 C105,0 105,100 100,100 C100,105 0,105 0,100 C-5,100 -5,0 0,0");
-    }
-
-    &:active > svg > path {
-        d: path("M0,0 C30,10 70,10 100,0 C95,30 95,70 100,100 C70,90 30,90 0,100 C5,70 5,30 0,0");
-    }
+        
 `
 export const ButtonLink = styled(ButtonStyle).attrs({ as: 'a' })`
     text-decoration: none;

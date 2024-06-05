@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledItem = styled.div`
+export const StyledCategoryItem = styled.div`
     border: 1px solid ${(props)=> props.theme.borderColor};
     display: flex;
     flex-direction: column;

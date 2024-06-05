@@ -3,7 +3,9 @@ const LightTheme = {
     primaryText: '#111',
     secondaryText: '#767676',
     borderColor: 'rgb(106, 106, 106)',
-    primaryButton: '#950cde',
+    primaryButton: '#FF4500', 
+    lightButton: '#fff',
+    blueButton: '#0099FF',
 }
 
 export default LightTheme;
