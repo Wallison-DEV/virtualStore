@@ -24,7 +24,7 @@ export const Star = styled.span`
 
 export const ProgressBar = styled.div`
     height: 8px;
-    width: 100px; /* Ajuste o tamanho conforme necessário */
+    width: 100px; 
     background-color: #ccc;
     border-radius: 4px;
     overflow: hidden;
