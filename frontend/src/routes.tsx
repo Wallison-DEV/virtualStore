@@ -9,7 +9,7 @@ import CategoryPage from './Pages/CategoryPage';
 import ProfileConf from './Pages/ProfileConf';
 import Search from './Pages/Search';
 import Checkout from './Pages/Checkout';
-import ProductDetails from './Pages/ProductDetails';
+import ProductPage from './Pages/ProductPage';
 
 const Rotas = () => {
     return (
@@ -18,7 +18,7 @@ const Rotas = () => {
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<SignUp />} />
                 <Route path='/category' element={<CategoryPage />} />
-                <Route path='/product' element={<ProductDetails />} />
+                <Route path='/product' element={<ProductPage />} />
                 <Route path='/configurations' element={<ProfileConf />} />
                 <Route path='/search' element={<Search />} />
                 <Route path='/checkout' element={<Checkout />} />
