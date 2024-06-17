@@ -22,11 +22,8 @@ const SignUp = () => {
                     <label htmlFor="re-password">Re-enter password</label>
                     <input id='re-password' type="password" />
                 </S.InputDiv>
-                <Button maxwidth='350px'>
+                <Button variant='orange' maxwidth='350px'>
                     <span>Log In</span>
-                    <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
-                        <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0" />
-                    </svg>
                 </Button>
                 <p>By continuing, you agree to Store's <a>Conditions of Use</a> and <a>Privacy Notice</a>.</p>
                 <div>
@@ -35,7 +32,6 @@ const SignUp = () => {
                 </div>
                 <div>
                     <p>Already have an account? <a href='/login'>Sign in</a></p>
-
                 </div>
             </S.LoginDiv>
         </div >

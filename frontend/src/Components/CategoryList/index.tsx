@@ -3,7 +3,7 @@ import * as S from './styles'
 
 const CategoryList = () => {
     return (
-        <S.StyledList>
+        <S.StyledCategoryList>
             <CategoryItem />
             <CategoryItem />
             <CategoryItem />
@@ -13,7 +13,7 @@ const CategoryList = () => {
             <CategoryItem />
             <CategoryItem />
             <CategoryItem />
-        </S.StyledList>
+        </S.StyledCategoryList>
     )
 }
 
