@@ -41,9 +41,13 @@ export const StyledItem = styled.div`
         font-weight: 500;
     }
     #discount{
-        
         font-size: 13px;
         font-weight:400;
+
+        >div{
+            font-size: 15px;
+        }
+        
         span {
             background: ${(props) => props.theme.primaryButton};
             padding: 4px 8px;

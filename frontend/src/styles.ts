@@ -34,3 +34,21 @@ export const Container = styled.div`
     margin: 0 auto;
     padding-bottom: 24px;
 `
+
+export const PrimaryTitle = styled.h1`
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: 700;
+`
+export const SecondaryTitle = styled.h2`
+    font-size: 21px;
+    font-weight: 700;
+`
+export const TertiaryTitle = styled.h3`
+    font-size: 16px;
+    font-weight: 700;
+`
+export const QuaternaryTitle = styled.h3`
+    font-size: 18px;
+    font-weight: 700;
+`

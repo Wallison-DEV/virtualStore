@@ -28,11 +28,16 @@ export const InputDiv = styled.div`
     flex-direction: column;
     width: 100%;
 
-    input {
+    input, select {
+        margin: 4px 0;
         padding: 6px;
         border-radius: 4px;
         outline: none;
         border: 1px solid ${(props)=> props.theme.borderColor};
+    }
+
+    .error {
+        color: red;
     }
 `
 export const Separador = styled.div`
