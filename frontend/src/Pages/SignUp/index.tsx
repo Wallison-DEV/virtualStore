@@ -3,7 +3,7 @@ import * as S from '../Login/styles'
 
 const SignUp = () => {
     return (
-        <div className="container">
+        <div className="container" style={{ justifyContent: 'center' }}>
             <S.LoginDiv>
                 <h1>Sign up</h1>
                 <S.InputDiv>
