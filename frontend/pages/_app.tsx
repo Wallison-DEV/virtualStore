@@ -1,3 +1,5 @@
+import React from 'react';
+import { AuthProvider } from '@/context/AuthContext';
 import { AppProps } from 'next/app';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
@@ -5,8 +7,7 @@ import { Provider } from 'react-redux';
 import { store } from '@/app/Store/index';
 import LightTheme from '@/app/Themes/light';
 import DarkTheme from '@/app/Themes/dark';
-import { GlobalStyle } from '@/app/Styles/styles';
-import React from 'react';
+import { GlobalStyle, Container } from '@/app/Styles/styles';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isLightTheme, setIsLightTheme] = useState(true);
@@ -15,7 +16,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <ThemeProvider theme={isLightTheme ? LightTheme : DarkTheme}>
         <GlobalStyle />
-        <Component {...pageProps} />
+        <Container>
+          <AuthProvider>
+            <Component {...pageProps} />
+          </AuthProvider>
+        </Container>
       </ThemeProvider>
     </Provider>
   );

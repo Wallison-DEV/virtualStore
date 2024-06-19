@@ -7,3 +7,37 @@ declare type ButtonProps = {
     maxwidth?: string
     href?: string
 }
+
+declare interface Card {
+    id: number;
+    owner_name: string;
+    cpf_owner: string;
+    name_in_card: string;
+    card_number: string;
+    expires_month: string;
+    expires_year: string;
+    cvv: string;
+    user_id: number;
+}
+
+declare interface Address {
+    id: number;
+    address: string;
+    country: string;
+    state: string;
+    zip: string;
+    city: string;
+    receiver_name: string;
+    receiver_cpf: string;
+    user_id: number;
+}
+
+declare interface Client {
+    id: number;
+    username: string;
+    email: string;
+    date_of_birth: string | null;
+    cards: Card[];
+    address: Address[];
+    orders: any[]; 
+}
