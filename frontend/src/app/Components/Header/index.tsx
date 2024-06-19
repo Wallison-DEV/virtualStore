@@ -1,21 +1,39 @@
-import { IoGameControllerOutline, IoBasketballOutline, IoHomeOutline, IoTvOutline } from "react-icons/io5";
+import { useEffect, useState } from 'react';
+import { IoGameControllerOutline, IoBasketballOutline, IoHomeOutline, IoTvOutline, IoSearchSharp } from "react-icons/io5";
 import { TbBabyCarriage } from "react-icons/tb";
+import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import { GiClothes, GiHealthCapsule } from "react-icons/gi";
-import { IoSearchSharp } from "react-icons/io5";
-
-import * as S from './styles'
-import StoreLogo from '@/app/assets/img/store_logo.png'
+import * as S from './styles';
+import StoreLogo from '@/app/assets/img/store_logo.png';
 import Image from "next/image";
 
 const Header = () => {
+    const [user, setUser] = useState<Client | null>(null);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const userString = localStorage.getItem('user');
+            const user: Client | null = userString ? JSON.parse(userString) : null;
+            setUser(user);
+        }
+    }, []);
+
     return (
         <S.StyledHeader>
             <nav>
-                <div className="navItem">Delivery To</div>
-                <div className="navItem"><Image className="logo" src={StoreLogo} alt="" /></div>
-                <div>
-                    <div className="navItem">Hello, sign in</div>
-                    <div className="navItem">Cart</div>
+                <div className='address'>Delivering To {user ? (user.address.length > 0 ? user.address[0].address : 'Nashville, 1337') : 'Nashville, 1337'}</div>
+                <div ><Image className="logo" src={StoreLogo} alt="" /></div>
+                <div className='flex-item'>
+                    <div className="username">Hello, {user ? (user.username ? user.username : 'sign in') : 'sign in'} </div>
+                    <S.CartButton href='cart/'>
+                        <span className='icon'>
+                            <PiShoppingCartSimpleLight size={48} />
+                            <span>
+                                0
+                            </span>
+                        </span>
+                        Cart
+                    </S.CartButton>
                 </div>
             </nav>
             <S.SearchBar>

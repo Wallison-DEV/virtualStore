@@ -5,7 +5,7 @@ export const StyledHeader = styled.header`
     display: flex;
     flex-direction: column;
     padding: 16px;
-    // position: sticky;
+    position: sticky;
     top: 0;
     border-bottom: 1px solid rgba(106, 106, 106, 0.4);
     z-index: 1;
@@ -16,11 +16,49 @@ export const StyledHeader = styled.header`
         justify-content: space-between;
         width: 100%;
 
-        .navItem {
+        div {
             display: flex;
             align-items: center;
             flex-direction: column;
             justify-content: center;
+            text-align: center;
+            max-width: 280px;
+            font-size: 12px;
+            font-weight: 400;
+        }
+        .address {
+            max-width: 280px;
+            color: rgb(204, 204, 204);
+        }
+        .username {
+            font-size: 16px;
+            max-width: 280px;
+        }
+        .flex-item{
+            flex-direction: row;
+            gap: 16px;
+        }
+    }
+`
+
+export const CartButton = styled.a`
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+
+    .icon{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        span {
+            position: absolute;
+            top: 15px;
+            left: 22px;
+            font-weight: bold;
+            color: ${(props)=> props.theme.primaryButton};
         }
     }
 `
