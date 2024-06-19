@@ -4,14 +4,15 @@ import { GiClothes, GiHealthCapsule } from "react-icons/gi";
 import { IoSearchSharp } from "react-icons/io5";
 
 import * as S from './styles'
-import StoreLogo from '../../assets/img/store_logo.png'
+import StoreLogo from '@/app/assets/img/store_logo.png'
+import Image from "next/image";
 
 const Header = () => {
     return (
         <S.StyledHeader>
             <nav>
                 <div className="navItem">Delivery To</div>
-                <div className="navItem"><img className="logo" src={StoreLogo} alt="" /></div>
+                <div className="navItem"><Image className="logo" src={StoreLogo} alt="" /></div>
                 <div>
                     <div className="navItem">Hello, sign in</div>
                     <div className="navItem">Cart</div>

@@ -1,4 +1,4 @@
-import ItemsList from "../../Components/ItemsList"
+import ItemsList from "../src/app/Components/ItemsList"
 
 const CategoryPage = () => {
     return (

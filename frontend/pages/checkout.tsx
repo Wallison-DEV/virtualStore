@@ -5,10 +5,10 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import InputMask from 'react-input-mask'
 
-import Button from '../../Components/Button'
+import Button from '../src/app/Components/Button'
 import { PrimaryTitle, QuaternaryTitle } from '../../styles'
 import { InputDiv } from '../Login/styles'
-import * as S from './styles'
+import * as S from '../src/app/Styles/checkout'
 
 type Installment = {
     quantity: number

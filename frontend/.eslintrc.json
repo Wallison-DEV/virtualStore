@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "ignorePatterns": [
+    "node_modules/*",
+    ".next/*"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  }
+}
