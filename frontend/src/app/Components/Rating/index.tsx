@@ -2,7 +2,7 @@ import StarRating from '../StarRating'
 import * as S from './styles'
 
 import UserIcon from '../../assets/img/profile-user.png'
-import { SecondaryTitle, TertiaryTitle } from '../../styles'
+import { SecondaryTitle, TertiaryTitle } from '../../Styles/styles'
 
 const Rating = () => {
     return (

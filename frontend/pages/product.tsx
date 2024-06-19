@@ -1,5 +1,5 @@
-import ProductDetails from "../../Components/ProductDetails"
-import Rating from "../../Components/Rating"
+import ProductDetails from "../src/app/Components/ProductDetails"
+import Rating from "../src/app/Components/Rating"
 
 const ProductPage = () => {
     return (

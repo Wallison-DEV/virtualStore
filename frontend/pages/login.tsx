@@ -1,5 +1,5 @@
-import Button from '../../Components/Button'
-import * as S from './styles'
+import Button from '../src/app/Components/Button'
+import * as S from '@/app/Styles/login'
 
 const Login = () => {
     return (
