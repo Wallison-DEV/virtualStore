@@ -1,14 +1,17 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useAuth } from '@/context/AuthContext';
 import { useTheme } from 'styled-components'
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import InputMask from 'react-input-mask'
 
-import Button from '../src/app/Components/Button'
-import { PrimaryTitle, QuaternaryTitle } from '../../styles'
-import { InputDiv } from '../Login/styles'
-import * as S from '../src/app/Styles/checkout'
+import Button from '@/app/Components/Button'
+import { PrimaryTitle, QuaternaryTitle } from '@/app/Styles/styles'
+import { InputDiv } from '@/app/Styles/login'
+import * as S from '@/app/Styles/checkout'
+import { parseValue } from '@/Utils'
+import { useRouter } from 'next/router'
 
 type Installment = {
     quantity: number
@@ -20,10 +23,19 @@ const Checkout = () => {
     const [payWithCard, setPayWithCard] = useState(false)
     const [installments, setInstallments] = useState<Installment[]>([])
     const theme = useTheme()
+    const { isAuthenticated } = useAuth();
+    const router = useRouter();
 
-    function parseValue(value: string): string {
-        return value.replace(/\D/g, '')
-    }
+    useEffect(() => {
+        if (isAuthenticated) {
+            router.replace('/login');
+        }
+    }, []);
+    useEffect(() => {
+        if (isAuthenticated) {
+            router.replace('/login');
+        }
+    }, [router, isAuthenticated]);
 
     const schema = yup.object({
         country: yup.string().required("Country is required").min(3, 'The country need to have minimun 3 letters'),

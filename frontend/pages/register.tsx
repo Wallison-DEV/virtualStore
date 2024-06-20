@@ -1,7 +1,29 @@
+import React, { useEffect, useState } from 'react';
+import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/router';
+
 import Button from '../src/app/Components/Button'
 import * as S from '@/app/Styles/login'
 
 const SignUp = () => {
+    const { isAuthenticated } = useAuth();
+    const [name, setName] = useState('');
+    const [number, setNumber] = useState('');
+    const [mail, setMail] = useState('');
+    const [password, setPassword] = useState('');
+    const router = useRouter();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            router.replace('/');
+        }
+    }, []);
+    useEffect(() => {
+        if (isAuthenticated) {
+            router.replace('/');
+        }
+    }, [router, isAuthenticated]);
+
     return (
         <div className="container" style={{ justifyContent: 'center' }}>
             <S.LoginDiv>
@@ -11,8 +33,12 @@ const SignUp = () => {
                     <input id='name' type="text" />
                 </S.InputDiv>
                 <S.InputDiv>
-                    <label htmlFor="number-mail">Mobile number or email</label>
-                    <input id='number-mail' type="text" />
+                    <label htmlFor="number">Mobile number</label>
+                    <input id='number' type="number" />
+                </S.InputDiv>
+                <S.InputDiv>
+                    <label htmlFor="mail">E-Mail</label>
+                    <input id='mail' type="mail" />
                 </S.InputDiv>
                 <S.InputDiv>
                     <label htmlFor="password">Password</label>

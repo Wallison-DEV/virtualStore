@@ -94,3 +94,7 @@ export const verifyAuthenticated = async (accessToken: any, accessTokenExp: any)
     console.error('Token não encontrado ou inválido.');
     return false;
 };
+
+export function parseValue(value: string): string {
+    return value.replace(/\D/g, '')
+}

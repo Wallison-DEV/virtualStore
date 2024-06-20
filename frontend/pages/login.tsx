@@ -1,13 +1,26 @@
-// src/pages/login.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/router';
+
 import Button from '@/app/Components/Button';
 import * as S from '@/app/Styles/login';
 
 const Login = () => {
-    const { login } = useAuth();
+    const { login, isAuthenticated } = useAuth();
     const [usernameOrEmail, setUsernameOrEmail] = useState('');
     const [password, setPassword] = useState('');
+    const router = useRouter();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            router.replace('/');
+        }
+    }, []);
+    useEffect(() => {
+        if (isAuthenticated) {
+            router.replace('/');
+        }
+    }, [router, isAuthenticated]);
 
     const handleLogin = async (e) => {
         e.preventDefault();
