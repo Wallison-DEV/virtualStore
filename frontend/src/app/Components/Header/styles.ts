@@ -5,7 +5,7 @@ export const StyledHeader = styled.header`
     display: flex;
     flex-direction: column;
     padding: 16px;
-    position: sticky;
+    // position: sticky;
     top: 0;
     border-bottom: 1px solid rgba(106, 106, 106, 0.4);
     z-index: 1;
@@ -34,9 +34,15 @@ export const StyledHeader = styled.header`
             font-size: 16px;
             max-width: 280px;
         }
+        .logo {
+            img {
+                width: 64px;
+                height: 64px;
+            }
+        }
         .flex-item{
             flex-direction: row;
-            gap: 16px;
+            gap: 48px;
         }
     }
 `
@@ -48,21 +54,8 @@ export const CartButton = styled.a`
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
-
-    .icon{
-        position: relative;
-        display: flex;
-        justify-content: center;
-        span {
-            position: absolute;
-            top: 15px;
-            left: 22px;
-            font-weight: bold;
-            color: ${(props)=> props.theme.primaryButton};
-        }
-    }
+    gap: 8px;
 `
-
 
 export const SearchBar = styled.form`
     display: flex;
@@ -89,13 +82,13 @@ export const SearchBar = styled.form`
             height: 40px;
             padding: 8px;
             border: none;
-            background: #950cde;
+            background: ${(props) => props.theme.primaryButton};
             border-radius: 50%;
             position: absolute;
             right: 8px;
             top: calc(50% - 20px); 
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
 
             svg{
                 width: 100%;
@@ -103,8 +96,8 @@ export const SearchBar = styled.form`
                 fill:#fff;
             }
             
-            &: hover {
-                background: #7a0aae;
+            &:hover {
+                opacity: 0.9;
             }
         }
     }
@@ -117,7 +110,8 @@ export const CategoryNavItem = styled.a`
     justify-content: center;
     text-align: center;
     padding: 8px;
-    width: 80px;
+    width: 100px;
+    height: 100px; 
     cursor: pointer;
     border-bottom: 4px solid transparent;
     transition: all 0.3s;
@@ -137,5 +131,12 @@ export const CategoryNavItem = styled.a`
             fill: #111;
         }
         border-bottom: 4px solid rgb(221, 221, 221);
+    }
+
+    p {
+        margin-top: 8px;
+        font-size: 12px;
+        text-align: center;
+        line-height: 1.2; 
     }
 `
