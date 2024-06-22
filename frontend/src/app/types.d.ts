@@ -41,3 +41,16 @@ declare interface Client {
     address: Address[];
     orders: any[]; 
 }
+
+declare interface ItemProps {
+    name: string;
+    imageUrl: string;
+    rating: number;
+    currentPrice: number;
+    discount: number;
+    lastPrice: number;
+}
+
+declare interface ItemsListProps {
+    category: string;
+}
