@@ -8,7 +8,7 @@ from Orders.views import OrderViewSet
 from Products.views import ProductViewSet
 from UsersAccounts.views import UserViewSet
 from UsersAccounts import urls as UserUrls
-from Companies.views import CompanyViewSet
+from Companies.views import CompanyViewSet, CompanyProductLineViewSet, RatingViewSet
 
 router = DefaultRouter()
 router.register(r'address', AddressViewSet)
@@ -17,6 +17,8 @@ router.register(r'order', OrderViewSet)
 router.register(r'product', ProductViewSet)
 router.register(r'user', UserViewSet)
 router.register(r'company', CompanyViewSet)
+router.register(r'product-lines', CompanyProductLineViewSet)
+router.register(r'rating', RatingViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
