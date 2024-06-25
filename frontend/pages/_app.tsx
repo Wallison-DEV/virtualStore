@@ -1,5 +1,6 @@
 import React from 'react';
 import { AuthProvider } from '@/context/AuthContext';
+import { BusinessAuthProvider } from '@/context/BusinessAuthContext';
 import { AppProps } from 'next/app';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
@@ -18,7 +19,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <GlobalStyle />
         <Container>
           <AuthProvider>
-            <Component {...pageProps} />
+            <BusinessAuthProvider>
+              <Component {...pageProps} />
+            </BusinessAuthProvider>
           </AuthProvider>
         </Container>
       </ThemeProvider>

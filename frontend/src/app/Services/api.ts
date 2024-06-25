@@ -16,8 +16,33 @@ const api = createApi({
                 body: body
             })
         }),
+        signupClient: builder.mutation({
+            query: (body)=>({
+                url: 'user/',
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: body
+            })
+        }),
+        signupBusiness: builder.mutation({
+            query: (body)=>({
+                url: 'company/',
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: body
+            })
+        }),
+        
     })
 })
-export const { useDoLoginMutation } = api
+export const { 
+    useDoLoginMutation,
+    useSignupClientMutation,
+    useSignupBusinessMutation,
+} = api
 
 export default api
