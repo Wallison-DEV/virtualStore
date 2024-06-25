@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ButtonStyle = styled.button<Omit<ButtonProps, 'children'| 'type' | 'className'>>`
+export const ButtonStyle = styled.button<Omit<ButtonProps, 'children'| 'type' | 'className' | 'onClick'>>`
     display: flex;
     align-items: center;
     justify-content: center;
