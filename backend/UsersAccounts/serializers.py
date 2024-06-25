@@ -2,16 +2,14 @@ from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import check_password
+from datetime import timedelta
 
 from .models import UserModel
-from Address.models import AddressModel
 from Address.serializers import AddressSerializer
-from Card.models import CardModel
 from Card.serializers import CardSerializer
-from Orders.models import OrderModel
 from Orders.serializers import OrderSerializer
 from Companies.models import CompanyModel
-from Companies.serializers import CompanySerializer 
+from Companies.serializers import CompanySerializer
 
 class UserSerializer(serializers.ModelSerializer):
     cards = CardSerializer(many=True, read_only=True)
@@ -40,18 +38,24 @@ class CustomTokenObtainPairSerializer(serializers.Serializer):
 
     def authenticate_credentials(self, username_or_email_or_registration, password):
         user = authenticate(username=username_or_email_or_registration, password=password)
-
         if user:
             return user
 
         try:
+            user = UserModel.objects.get(email=username_or_email_or_registration)
+            if user.check_password(password):
+                return user
+        except UserModel.DoesNotExist:
+            pass
+
+        try:
             company = CompanyModel.objects.get(registration_number=username_or_email_or_registration)
-            if password == company.password:
+            if company.password == password:
                 return company
             else:
-                print(f'Senha incorreta para a empresa {company.username}. Senha frontend: {password}, Senha backend: {company.password}')
+                pass
         except CompanyModel.DoesNotExist:
-            print('Empresa não encontrada para registro:', username_or_email_or_registration)
+            pass
 
         return None
 
@@ -62,26 +66,36 @@ class CustomTokenObtainPairSerializer(serializers.Serializer):
 
             user_serializer = UserSerializer(user)
             user_data = user_serializer.data
-        elif isinstance(user, CompanyModel):
-            access_token = self.generate_access_token_for_company(user)
 
-            company_serializer = CompanySerializer(user)
-            user_data = company_serializer.data
+            return {
+                'refresh': str(refresh),
+                'access': access_token,
+                'exp': refresh.payload['exp'],
+                'user': user_data,
+            }
+        elif isinstance(user, CompanyModel):
+            return self.generate_refresh_token_for_company(user)
         else:
             raise serializers.ValidationError('Unexpected user type encountered during serialization')
+
+    def generate_refresh_token_for_company(self, company):
+
+        refresh = RefreshToken()
+        refresh['user_id'] = company.pk
+        refresh['username'] = company.username
+        refresh['email'] = company.email
+        refresh['registration_number'] = company.registration_number
+        refresh.set_exp(lifetime=timedelta(hours=1))  
+
+        access_token = str(refresh.access_token)
+        exp = refresh.payload['exp']
+
+        company_serializer = CompanySerializer(company)
+        user_data = company_serializer.data
 
         return {
             'refresh': str(refresh),
             'access': access_token,
-            'exp': refresh.payload['exp'],
+            'exp': exp,
             'user': user_data,
         }
-        
-    def generate_access_token_for_company(self, company):
-        refresh = RefreshToken()
-        refresh['username'] = company.username
-        refresh['email'] = company.email
-        refresh['exp'] = refresh.payload['iat'] + 3600  
-
-        token = str(refresh.access_token)
-        return token
