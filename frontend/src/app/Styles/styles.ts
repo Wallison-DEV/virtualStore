@@ -28,9 +28,9 @@ export const GlobalStyle = createGlobalStyle`
 export const Container = styled.div`
     display: flex;
     height: 100%;
+    width: 100%;
     min-height: 100vh;
     max-width: 1310px;
-    justify-content: center;
     margin: 0 auto;
     padding-bottom: 24px;
 `

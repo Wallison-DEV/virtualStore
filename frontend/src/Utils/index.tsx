@@ -1,6 +1,5 @@
 export const calculateTimeUntilExpiration = (expirationTimeInSeconds: number) => {
     if (!Number.isFinite(expirationTimeInSeconds)) {
-        console.error('O tempo de expiração não é um número finito:', expirationTimeInSeconds);
         return 0;
     }
     const nowInSeconds = Math.floor(Date.now() / 1000);
@@ -35,14 +34,12 @@ export const scheduleTokenRefresh = async (timeUntilExpiration: number, refreshT
                     const updatedTimeUntilExpiration = calculateTimeUntilExpiration(Number(newTokenExp));
                     scheduleTokenRefresh(updatedTimeUntilExpiration, updatedRefreshToken, 0);
                 } else {
-                    console.error('Falha ao renovar token:', response.status);
                     if (refreshToken) {
                         scheduleTokenRefresh(timeUntilExpiration, refreshToken, attempt + 1);
                     }
                     return
                 }
             } catch (error: any) {
-                console.error('Erro ao renovar token:', error.message);
                 if (refreshToken) {
                     scheduleTokenRefresh(timeUntilExpiration, refreshToken, attempt + 1);
                 }
@@ -60,7 +57,6 @@ const isTokenExpired = (exp: number) => {
 
 const validateToken = async (accessToken: any) => {
     if (!accessToken) {
-        console.error('Token not found');
         return false;
     }
     try {
@@ -74,11 +70,9 @@ const validateToken = async (accessToken: any) => {
         if (response.status == 200) {
             return true;
         } else {
-            console.error('Failed to validate token');
             return false;
         }
     } catch (error) {
-        console.error('Error validating token:', error);
         return false;
     }
 }
@@ -86,12 +80,10 @@ const validateToken = async (accessToken: any) => {
 export const verifyAuthenticated = async (accessToken: any, accessTokenExp: any) => {
     if (accessTokenExp) {
         if (isTokenExpired(Number(accessTokenExp))) {
-            console.log('Token expirado ou inválido.');
             return false;
         }
         return await validateToken(accessToken);
     }
-    console.error('Token não encontrado ou inválido.');
     return false;
 };
 

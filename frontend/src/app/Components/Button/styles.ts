@@ -47,7 +47,7 @@ export const ButtonStyle = styled.button<Omit<ButtonProps, 'children'| 'type' | 
         z-index: 1;
         font-size: 1rem;
         color: ${(props) => (props.variant == 'light' ? `#111` : '#fff')};
-        font-weight: 500;
+        font-weight: bold;
     }
 
     &:hover > span {

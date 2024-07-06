@@ -14,7 +14,7 @@ const BusinessLogin = () => {
 
     useEffect(() => {
         if (isAuthenticated) {
-            router.replace('/');
+            router.replace('/business/');
         }
     }, [isAuthenticated, router]);
 

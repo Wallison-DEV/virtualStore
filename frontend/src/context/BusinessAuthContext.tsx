@@ -64,7 +64,7 @@ export const BusinessAuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ ch
             localStorage.setItem('refreshToken', refreshToken);
             localStorage.setItem('user', JSON.stringify(user));
             setIsAuthenticated(true);
-            router.push('/');
+            router.push('/business/');
         } catch (error: any) {
             console.error('Error logging in:', error);
         }
@@ -89,7 +89,7 @@ export const BusinessAuthProvider: React.FC<React.PropsWithChildren<{}>> = ({ ch
                     localStorage.removeItem('accessTokenExp');
                     localStorage.removeItem('user');
                     setIsAuthenticated(false);
-                    router.push('/');
+                    router.push('/business/login/');
                 }
             }
         } catch (error: any) {

@@ -21,7 +21,7 @@ const BusinessSignUp = () => {
 
     useEffect(() => {
         if (isAuthenticated) {
-            router.replace('/business/login');
+            router.replace('/business/');
         }
     }, [isAuthenticated, router]);
 
